@@ -1,3 +1,3 @@
 # config
 my configuration
-![alt text](https://i.imgur.com/9OQTEBr.png)
+![alt text](config/images/screen_desktop.png)
