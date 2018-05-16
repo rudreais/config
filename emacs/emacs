@@ -1,0 +1,203 @@
+(require 'package)
+; add MELPA to repository list
+(add-to-list 'package-archives
+	     '("melpa" . "https://melpa.org/packages/") t)
+(add-to-list 'package-archives
+	     '("melpa-stable" . "https://stable.melpa.org/packages/") t)
+(add-to-list 'package-archives
+	     '("elpy" . "http://jorgenschaefer.github.io/packages/") t)
+(when (>= emacs-major-version 24)
+  (require 'package)
+  (package-initialize)
+  (add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/") t)
+)
+; initialize package.el
+;(package-initialize)
+;(add-to-list 'package-pinned-packages '(ivy . "melpa"))
+;;;; ELECTIR-PAIR-MODE: BRACKET AUTOCOMPLETION
+(electric-pair-mode 't)
+
+;(require 'auto-complete)
+;(require 'auto-complete-config)
+;(ac-config-default)
+;(require 'yasnippet)
+;(yas-global-mode 1)
+;(emmet-mode 't)
+
+;;; LINUM: LINE SEPARATOR & FORMAT
+(require 'linum-relative)
+;(require 'hlinum)
+;(hlinum-activate)
+(global-linum-mode 1)
+(setq linum-relative-format "%2s ")
+;(setq linum-relative-format "%2s \u2502 ")
+
+(linum-relative-global-mode 1)
+
+;; -------------------------------------------
+;; -------------------------------------------
+;(add-to-list 'load-path "~/.emacs.d/lisp")
+;(add-hook 'after-change-major-mode-hook 'fci-mode)
+;(load-file "~/.emacs.d/init.el")
+;; -------------------------------------------
+;; -------------------------------------------
+
+;;; WHITESPACE: WHITESPACE & FORMAT
+(require 'whitespace)
+(setq whitespace-display-mappings
+      '((space-mark   ?\     [?·]     [?.])
+	(newline-mark ?\n    [?$ ?\n])
+	(tab-mark     ?\t    [?. ?\t] [?\\ ?\t])))
+
+(setq whitespace-style '(face trailing tabs tab-mark newline newline-mark))
+;(set-face-background 'whitespace-tab "none")
+;(set-face-foreground 'whitespace-tab "#883333")
+;(set-face-background 'whitespace-space "none")
+;(set-face-foreground 'whitespace-space "#111111")
+;(set-face-background 'whitespace-newline "none")
+;(set-face-foreground 'whitespace-newline "#666698")
+(global-whitespace-mode t)
+(add-hook 'before-save-hook 'whitespace-cleanup) ;; delete whitespace at saving
+
+(menu-bar-mode -1) ;; delete menu bar
+(column-number-mode 't)
+
+(ivy-mode 't) ;; ivy-mode->file searching
+(global-set-key (kbd "C-s") 'swiper) ;; swiper->line searching through
+
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(ansi-color-faces-vector
+   [default default default italic underline success warning error])
+ '(ansi-color-names-vector
+   ["#2d3743" "#ff4242" "#74af68" "#dbdb95" "#34cae2" "#008b8b" "#00ede1" "#e1e1e0"])
+ '(compilation-message-face (quote default))
+ '(cua-global-mark-cursor-color "#2aa198")
+ '(cua-normal-cursor-color "#839496")
+ '(cua-overwrite-cursor-color "#b58900")
+ '(cua-read-only-cursor-color "#859900")
+ '(custom-enabled-themes (quote (solarized-dark)))
+ '(custom-safe-themes
+   (quote
+    ("d677ef584c6dfc0697901a44b885cc18e206f05114c8a3b7fde674fce6180879" "a8245b7cc985a0610d71f9852e9f2767ad1b852c2bdea6f4aadc12cce9c4d6d0" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" "9f6bb9593ed3a2c249ed5ed73f38f6d4f41735dbc2aff511a8c43623bf73556a" "36ca8f60565af20ef4f30783aa16a26d96c02df7b4e54e9900a5138fb33808da" "bf798e9e8ff00d4bf2512597f36e5a135ce48e477ce88a0764cfb5d8104e8163" "c9ddf33b383e74dac7690255dd2c3dfa1961a8e8a1d20e401c6572febef61045" "e8ac7d6c0bd1c7acb972697102d122ddcc2a4f59a708ea2038db9861a696fac1" "83c536b8eddf337825d72d339fe7df85201aba153d6f877d528ab2ba38af81eb" "670bd24042b04a7223ca84ecddf68c147b3be25c280d98a1d299eec70589b5a3" "ee33b6f48320a88de3f45f44feaab49a8fb34d279241764adce9d9ed059a8c69" "ed49d077bcc9c10821f4772c773e463b3cdf825f680917a3b04f14cbe0519861" "d1e24a9fa14c8691c4cf82b49891b051f58454a174202cd3b0f7f710904b96c3" "567354a9c9d24c8beff85b3ced9ae2adf20424bdf14131247a3cb076a3a4aee1" "ace9f12e0c00f983068910d9025eefeb5ea7a711e774ee8bb2af5f7376018ad2" default)))
+ '(fci-rule-color "#2e2e2e")
+ '(global-linum-mode t)
+ '(highlight-changes-colors (quote ("#d33682" "#6c71c4")))
+ '(highlight-symbol-colors
+   (--map
+    (solarized-color-blend it "#002b36" 0.25)
+    (quote
+     ("#b58900" "#2aa198" "#dc322f" "#6c71c4" "#859900" "#cb4b16" "#268bd2"))))
+ '(highlight-symbol-foreground-color "#93a1a1")
+ '(highlight-tail-colors
+   (quote
+    (("#073642" . 0)
+     ("#546E00" . 20)
+     ("#00736F" . 30)
+     ("#00629D" . 50)
+     ("#7B6000" . 60)
+     ("#8B2C02" . 70)
+     ("#93115C" . 85)
+     ("#073642" . 100))))
+ '(hl-bg-colors
+   (quote
+    ("#7B6000" "#8B2C02" "#990A1B" "#93115C" "#3F4D91" "#00629D" "#00736F" "#546E00")))
+ '(hl-fg-colors
+   (quote
+    ("#002b36" "#002b36" "#002b36" "#002b36" "#002b36" "#002b36" "#002b36" "#002b36")))
+ '(hl-paren-colors (quote ("#2aa198" "#b58900" "#268bd2" "#6c71c4" "#859900")))
+ '(inhibit-startup-screen t)
+ '(linum-format (quote linum-relative))
+ '(linum-relative-current-symbol "")
+ '(linum-relative-format "%2s ")
+ '(linum-relative-global-mode t)
+ '(magit-diff-use-overlays nil)
+ '(nrepl-message-colors
+   (quote
+    ("#dc322f" "#cb4b16" "#b58900" "#546E00" "#B4C342" "#00629D" "#2aa198" "#d33682" "#6c71c4")))
+ '(package-selected-packages
+   (quote
+    (ensime solarized-theme tramp-theme anaconda-mode elpy yasnippet-snippets ivy iedit auto-complete-chunk auto-complete-c-headers)))
+ '(pos-tip-background-color "#073642")
+ '(pos-tip-foreground-color "#93a1a1")
+ '(smartrep-mode-line-active-bg (solarized-color-blend "#859900" "#073642" 0.2))
+ '(term-default-bg-color "#002b36")
+ '(term-default-fg-color "#839496")
+ '(vc-annotate-background "#3b3b3b")
+ '(vc-annotate-background-mode nil)
+ '(vc-annotate-color-map
+   (quote
+    ((20 . "#dd5542")
+     (40 . "#CC5542")
+     (60 . "#fb8512")
+     (80 . "#baba36")
+     (100 . "#bdbc61")
+     (120 . "#7d7c61")
+     (140 . "#6abd50")
+     (160 . "#6aaf50")
+     (180 . "#6aa350")
+     (200 . "#6a9550")
+     (220 . "#6a8550")
+     (240 . "#6a7550")
+     (260 . "#9b55c3")
+     (280 . "#6CA0A3")
+     (300 . "#528fd1")
+     (320 . "#5180b3")
+     (340 . "#6380b3")
+     (360 . "#DC8CC3"))))
+ '(vc-annotate-very-old-color "#DC8CC3")
+ '(weechat-color-list
+   (quote
+    (unspecified "#002b36" "#073642" "#990A1B" "#dc322f" "#546E00" "#859900" "#7B6000" "#b58900" "#00629D" "#268bd2" "#93115C" "#d33682" "#00736F" "#2aa198" "#839496" "#657b83")))
+ '(xterm-color-names
+   ["#073642" "#dc322f" "#859900" "#b58900" "#268bd2" "#d33682" "#2aa198" "#eee8d5"])
+ '(xterm-color-names-bright
+   ["#002b36" "#cb4b16" "#586e75" "#657b83" "#839496" "#6c71c4" "#93a1a1" "#fdf6e3"]))
+
+(add-to-list 'load-path "~/.emacs.d/rudreais")
+(add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
+
+(require 'fill-column-indicator)
+(add-hook 'after-change-major-mode-hook 'fci-mode)
+(setq fci-rule-width 1)
+(setq fci-rule-use-dashes nil)
+
+;; ----------------------------------
+;;           EPITECH CONFIG
+;; ----------------------------------
+(add-to-list 'load-path "~/.emacs.d/lisp")
+(load "std.el")
+(load "std_comment.el")
+(setq-default bash-basic-offset 8)
+;(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(linum ((t (:background "brightblack" :foreground "#586e75" :underline nil :weight normal))))
+ '(linum-highlight-face ((t (:inherit default :background "black" :foreground "color-130"))))
+; '(whitespace-tab ((t (:background "#839496" :foreground "black" :inverse-video t))))
+; '(whitespace-trailing ((t (:foreground "#8B2C02")))))
+
+(setq backup-directory-alist '(("" . "~/.emacs.d/emacs-backup")))
+
+(defun on-frame-open (frame)
+  (if (not (display-graphic-p frame))
+    (set-face-background 'default "unspecified-bg" frame)))
+(on-frame-open (selected-frame))
+(add-hook 'after-make-frame-functions 'on-frame-open)
+(defun on-after-init ()
+  (unless (display-graphic-p (selected-frame))
+    (set-face-background 'default "unspecified-bg" (selected-frame))))
+
+(add-hook 'window-setup-hook 'on-after-init)
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(linum ((t (:background "none" :foreground "brightgreen" :underline nil :weight normal))))
+ '(whitespace-tab ((t (:foreground "#073642" :inverse-video nil)))))

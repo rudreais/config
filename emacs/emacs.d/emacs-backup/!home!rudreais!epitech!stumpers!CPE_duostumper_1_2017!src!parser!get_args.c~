@@ -1,0 +1,28 @@
+/*
+** EPITECH PROJECT, 2018
+** stumper
+** File description:
+** args
+*/
+
+#include "prototype.h"
+
+void get_bytes(parser_t *parser, char *arg)
+{
+	my_printf("bytes\n");
+}
+
+void get_lines(parser_t *parser, char *arg)
+{
+
+}
+
+void get_quiet(parser_t *parser, char *arg)
+{
+
+}
+
+void get_verbose(parser_t *parser, char *arg)
+{
+
+}

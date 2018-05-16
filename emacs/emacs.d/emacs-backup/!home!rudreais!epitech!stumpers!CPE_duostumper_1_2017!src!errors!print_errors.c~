@@ -1,0 +1,44 @@
+/*
+** EPITECH PROJECT, 2018
+** stumper
+** File description:
+** printerror
+*/
+
+#include "prototype.h"
+#include "parser.h"
+
+void print_no_arg(parser_t *parser)
+{
+}
+
+void print_invalid_nbr(parser_t *parser)
+{
+	if (parser->bytes == INVALID_NBR) {
+		my_putstr("tail: invalid number of bytes: '");
+		my_putstr(parser->last_arg);
+		my_putstr("'\n");
+	} else if (parser->lines == INVALID_NBR) {
+		my_putstr("tail: invalid number of lines: '");
+		my_putstr(parser->last_arg);
+		my_putstr("'\n");
+	}
+}
+
+void print_error(parser_t *parser)
+{
+	char *unknown = "tail: Unknown error occured.\n";
+
+	if (parser->bytes == NO_ARG || parser->lines == NO_ARG) {
+		my_printf("cc1\n");
+		print_no_arg(parser);
+		return;
+	}
+	if (parser->bytes == INVALID_NBR ||
+		   parser->lines == INVALID_NBR) {
+		my_printf("cc2\n");
+		print_invalid_nbr(parser);
+		return;
+	}
+	write(2, unknown, my_strlen(unknown));
+}

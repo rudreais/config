@@ -1,0 +1,13 @@
+/*
+** EPITECH PROJECT, 2018
+** duostumper
+** File description:
+** parser
+*/
+
+#include "prototype.h"
+
+void parser(parser_t *parser)
+{
+
+}

@@ -1,0 +1,13 @@
+/*
+** EPITECH PROJECT, 2018
+** project
+** File description:
+** main
+*/
+
+#include "my.h"
+
+int main(void)
+{
+	return (0);
+}

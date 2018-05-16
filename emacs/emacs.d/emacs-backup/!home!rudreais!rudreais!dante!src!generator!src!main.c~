@@ -1,0 +1,21 @@
+#include <stdio.h>
+#include <stdbool.h>
+#include "maze.h"
+#include "my.h"
+
+int main(int ac, char **av)
+{
+    maze_t maze;
+
+    if (ac < 3 && ac > 4)
+	    return (84);
+    init_maze(&maze, av);
+    if (maze.success == false)
+	    return (84);
+    generate(maze.rows, maze.size);
+    if (av[3] && (my_strcmp(av[3], "-d") == 0 || my_strcmp(av[3], "--debug") == 0))
+	    debug(&maze);
+    print_wall(&maze);
+    destroy_maze(&maze);
+    return (0);
+}

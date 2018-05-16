@@ -1,0 +1,18 @@
+/*
+** EPITECH PROJECT, 2018
+** stumper
+** File description:
+** init_parser
+*/
+
+#include "prototype.h"
+
+parser_t init_parser(int ac, char **av)
+{
+	parser_t parser;
+
+	parser.ac = ac;
+	parser.av = av;
+	parser.options = malloc (sizeof(option_t) * ac);
+	return (parser);
+}

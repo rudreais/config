@@ -1,0 +1,29 @@
+/*
+** EPITECH PROJECT, 2018
+** poke
+** File description:
+** poke
+*/
+
+void swap(poke_t **pokemons, int first, int second)
+{
+	poke_t *tmp;
+
+	tmp = pokemons[first];
+	pokemons[first] = pokemons[second];
+	pokemons[second] = tmp;
+}
+
+void sort_pokemons(poke_t **pokemons, int n)
+{
+	int i;
+	int j;
+
+	for (i = 1; i < n; i++) {
+		j = i;
+		while ((j > 0) && (my_strcmp(pokemons[j]->name, pokemons[j - 1]->name) < 0)) {
+			swap(pokemons, j, j - 1);
+			j = j - 1;
+		}
+	}
+}

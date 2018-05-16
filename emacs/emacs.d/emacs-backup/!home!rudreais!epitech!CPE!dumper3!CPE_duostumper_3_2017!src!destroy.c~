@@ -1,0 +1,12 @@
+/*
+** EPITECH PROJECT, 2018
+** sand
+** File description:
+** destroy
+*/
+
+void my_exit(int exit_status)
+{
+	destroy(args);
+	exit(exit_status);
+}

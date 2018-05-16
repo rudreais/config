@@ -1,0 +1,62 @@
+/*
+** EPITECH PROJECT, 2018
+** gol
+** File description:
+** map
+*/
+
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <fcntl.h>
+#include <stdio.h>
+#include <unistd.h>
+#include <stdlib.h>
+#include "gol.h"
+#include "my.h"
+
+void valid_line(map_t *map, char *line)
+{
+	static int size = -1;
+
+	for (int i = 0; line[i]; i++) {
+		if (line[i] != '.' && line[i] != 'X')
+			map->success = 0;
+		if (size != -1 && my_strlen(line) != size)
+			map->success = 0;
+		else
+			size = my_strlen(line);
+	}
+	if (size != -1 && my_strlen(line) == size)
+		map->success = 0;
+	else if (size == -1)
+		size = my_strlen(line);
+	else
+	map->success = 0;
+}
+
+void fulfill_map(map_t *map)
+{
+	char *line;
+	int counter = 0;
+
+	while ((line = my_gnl(map->fd)) != NULL) {
+		valid_line(map, line);
+		if (map->success == 0)
+			return;
+		counter++;
+		free(line);
+	}
+	map->states = malloc (sizeof(char *) * (counter + 1));
+	map->oldstates = malloc (sizeof(char *) * (counter + 1));
+	map->states[counter] = NULL;
+	map->oldstates[counter] = NULL;
+	map->nb_lines = counter;
+	close(map->fd);
+	map->fd = open(map->path, O_RDONLY);
+	counter = 0;
+	while ((line = my_gnl(map->fd)) != NULL) {
+		map->states[counter] = my_strdup(line);
+		map->oldstates[counter++] = line;
+	}
+	close(map->fd);
+}

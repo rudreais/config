@@ -1,0 +1,3 @@
+set -x MAIL valentin.lattay@epitech.eu
+alias ne="emacs -nw"
+alias ll="ls -l"

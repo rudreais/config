@@ -1,0 +1,11 @@
+/*
+** EPITECH PROJECT, 2018
+** 42
+** File description:
+** 42
+*/
+
+#pragma once
+
+#define SUCCESS_EXIT 0
+#define FAILURE_EXIT 84

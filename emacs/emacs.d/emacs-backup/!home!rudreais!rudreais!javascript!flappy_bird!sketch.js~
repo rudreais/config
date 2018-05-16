@@ -1,0 +1,13 @@
+let y = 100;
+
+function setup() {
+    createCanvas(640, 480);
+    frameRate(30);
+    bird = new Birds();
+}
+
+function draw() {
+    clear();
+    background(0, 0, 0);
+    bird.show();
+}

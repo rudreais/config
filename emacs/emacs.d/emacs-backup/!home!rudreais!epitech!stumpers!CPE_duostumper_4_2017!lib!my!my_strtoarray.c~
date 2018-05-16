@@ -1,0 +1,50 @@
+/*
+** EPITECH PROJECT, 2018
+** lib
+** File description:
+** strtoarray
+*/
+
+#include <stdlib.h>
+#include "my.h"
+
+static char **initialize_array(int nb_w)
+{
+	char **w_array = malloc (sizeof(char *) * nb_w + 1);
+
+	for (int i = 0; i < nb_w; i++)
+		w_array[i] = NULL;
+	return (w_array);
+}
+
+static char *move_cursor(char *str, char del)
+{
+	while (*str && *str == del)
+		str++;
+	return (str);
+}
+
+static char *move_word(char *str, char del)
+{
+	while (*str && *str != del)
+		str++;
+	return (str);
+}
+
+char **my_strtoarray(char *str, char del)
+{
+	int nb_words = my_getwords(str, del);
+	char **word_array = initialize_array(nb_words);
+	int size = 0;
+
+	for (int i = 0; i < nb_words; i++) {
+		str = move_cursor(str, del);
+		for (size = 0; str[size] != del && str[size]; ++size);
+		word_array[i] = malloc (sizeof(char) * size + 1);
+		word_array[i][size] = '\0';
+		for (size = 0; str[size] != del && str[size]; ++size)
+			word_array[i][size] = str[size];
+		str = move_word(str, del);
+	}
+	return (word_array);
+}

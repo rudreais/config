@@ -1,0 +1,55 @@
+/*
+** EPITECH PROJECT, 2018
+** gol
+** File description:
+** game
+*/
+
+#include <stdlib.h>
+#include "my.h"
+#include "gol.h"
+
+int test_case(map_t *map, int i, int j)
+{
+	if (i == -1 || j == -1 || map->oldstates[i] == NULL)
+		return (0);
+	if (map->oldstates[i][j] == '\0' || map->oldstates[i][j] != 'X')
+		return (0);
+	return (1);
+}
+
+void test_alive(map_t *map, int i, int j)
+{
+	int number =  0;
+
+	for (int y = -1; y != 2; y++) {
+		for (int x = -1; x != 2; x++) {
+			if (x != 0 || y != 0)
+				number += test_case(map, i - y, j - x);
+		}
+	}
+	if (map->oldstates[i][j] == 'X' && (number > 1 && number < 4))
+		map->states[i][j] = 'X';
+	else if (map->oldstates[i][j] == 'X')
+		map->states[i][j] = '.';
+	if (map->oldstates[i][j] == '.' && number == 3)
+		map->states[i][j] = 'X';
+	else if (map->oldstates[i][j] == '.')
+		map->states[i][j] = '.';
+}
+
+void play(map_t *map)
+{
+	char **save;
+
+	printf("iterating\n");
+	save = map->oldstates;
+	map->oldstates = map->states;
+	map->states = save;
+	for (int i = 0; map->states[i]; i++) {
+		for (int j = 0; map->states[i][j]; j++) {
+			test_alive(map, i, j);
+		}
+	}
+
+}

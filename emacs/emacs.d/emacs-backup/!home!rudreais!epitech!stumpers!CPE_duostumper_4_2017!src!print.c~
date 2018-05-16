@@ -1,0 +1,20 @@
+/*
+** EPITECH PROJECT, 2018
+** poke
+** File description:
+** poke
+*/
+
+#include <stdio.h>
+#include "poke.h"
+
+void print_details(pokes_t *pokes)
+{
+	for (int i = 0; i < pokes->size; i++) {
+		printf("Pokemon %s has ", pokes->pokemons[i]->name);
+		printf("%d attack, ", pokes->pokemons[i]->dmg);
+		printf("%d defense, ", pokes->pokemons[i]->def);
+		printf("%d speed and ", pokes->pokemons[i]->speed);
+		printf("%d health\n", pokes->pokemons[i]->hp);
+	}
+}

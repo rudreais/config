@@ -1,0 +1,25 @@
+
+char *concat_path(my_args_t *args)
+{
+	char *slash = "/";
+	char *tmp = my_strjoin(slash, args->arr_cmd[0]);
+	char *path_str = after_equal(my_getenv(args->my_env, "PATH="));
+	char **path = my_strtoarray(path_str, ':');
+
+	if (args->arr_cmd[0][0] == '/' ||
+	    my_strncmp(args->arr_cmd[0], "./", 2) == 0) {
+		free(tmp);
+		return args->arr_cmd[0];
+	}
+	free(tmp);
+	for (int i = 0; i < my_getwords(path_str, ':'); i++) {
+		my_printf("%s\n", my_strjoin(path[i], tmp));
+	}
+	return (args->arr_cmd[0]);
+}
+
+char *concat_path(my_args_t *args)
+{
+
+	return (real_path);
+}

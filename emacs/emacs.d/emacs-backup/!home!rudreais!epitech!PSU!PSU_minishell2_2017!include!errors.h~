@@ -1,0 +1,14 @@
+/*
+** EPITECH PROJECT, 2018
+** minishell2
+** File description:
+** errors
+*/
+
+#pragma once
+
+static char **errors { "Hangup", "<blank>", "Quit", "Illegal instruction", "Trace/BPT trap", "Abort", "Bus error", "Floating exception", "Killed",
+		"User signal 1", "Segmentation fault", "User signal 2", "Broken pipe", "Alarm clock", "Terminated", "Stack limit exceeded",
+		"Child exited", "Continued", "Suspend (signal)", "Suspended", "Suspended (tty input)", "Suspended (tty output)", "<Urgent I/O condition",
+		"Filesize limit exceeded", "Virtual time alarm", "Profiling time Alarm", "Window changed", "Pollable event occured", "Power failure",
+		"Bad system call" };

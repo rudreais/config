@@ -1,0 +1,54 @@
+## EPITECH PROJECT, 2018
+## makefile
+## File description
+## makefile
+##
+
+CFLAGS		+=	-W -Wall -Wextra -g -I include
+
+LDFLAGS		+=	-Llib/my	\
+			-lmy
+
+DIRLIB		=	./lib/my
+
+DIR		=	./src
+
+DIR_BUILTIN	=	$(DIR)/builtin
+
+DIR_INIT	=	$(DIR)/init
+
+DIR_EXE	=	$(DIR)/exe
+
+SRC		=	$(DIR)/main.c			\
+			$(DIR)/destroy.c		\
+			$(DIR)/prompt.c		\
+			$(DIR_BUILTIN)/builtin.c	\
+			$(DIR_BUILTIN)/setenv.c	\
+			$(DIR_BUILTIN)/setenv_add.c	\
+			$(DIR_BUILTIN)/unsetenv.c	\
+			$(DIR_BUILTIN)/getenv.c	\
+			$(DIR_BUILTIN)/exit.c		\
+			$(DIR_INIT)/init.c		\
+			$(DIR_EXE)/my_exe.c		\
+			$(DIR_EXE)/concat.c
+
+EXEC		=	mysh
+
+OBJ		=	$(SRC:.c=.o)
+
+all:			$(EXEC)
+
+$(EXEC):		$(OBJ)
+			make -C $(DIRLIB)
+			$(CC) -o $(EXEC) $(OBJ) $(LDFLAGS) $(CFLAGS)
+
+clean:
+			make -C $(DIRLIB) clean
+			rm -f $(OBJ)
+
+fclean:			clean
+			make -C $(DIRLIB) fclean
+			rm -f $(EXEC)
+
+re:			fclean all
+

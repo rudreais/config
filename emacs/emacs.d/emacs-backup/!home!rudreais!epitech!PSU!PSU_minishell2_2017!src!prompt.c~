@@ -1,0 +1,11 @@
+/*
+** EPITECH PROJECT, 2018
+** minishell
+** File description:
+** better prompt
+*/
+
+void print_prompt(void)
+{
+
+}

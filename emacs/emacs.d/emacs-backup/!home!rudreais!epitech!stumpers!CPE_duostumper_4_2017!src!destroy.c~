@@ -1,0 +1,20 @@
+/*
+** EPITECH PROJECT, 2018
+** poke
+** File description:
+** poke
+*/
+
+void destroy_poke(poke_t **poke, int size)
+{
+	for (int i = 0; i < size; i++) {
+		free(poke[i]);
+	}
+	fee(poke);
+}
+
+void destroy_pkm(pokes_t *pokes)
+{
+	destroy_poke(pokes->pokemons, pokes->size);
+	free()
+}

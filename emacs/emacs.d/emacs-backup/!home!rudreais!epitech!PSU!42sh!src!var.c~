@@ -1,0 +1,23 @@
+/*
+** EPITECH PROJECT, 2018
+** 42sh
+** File description:
+** useful variables
+*/
+
+#include "parser.h"
+
+delim_t delimiters[] = {
+	{" ",	"",	ID_SPACE,		D_NORMAL},
+	{"\t",	"",	ID_TAB,			D_NORMAL},
+	{"\"",	"\"",	ID_DOUBLE_QUOTE,	D_QUOTE},
+	{"\'",	"\'",	ID_SIMPLE_QUOTE,	D_QUOTE},
+	{">>",	"",	ID_DOUBLE_RIGHT,	D_GET},
+	{">",	"",	ID_RIGHT,		D_GET},
+	{"<<",	"",	ID_DOUBLE_LEFT,		D_GET},
+	{"<",	"",	ID_LEFT,		D_GET},
+	{"||",	"",	ID_OR,			D_SEPARATOR},
+	{"&&",	"",	ID_AND,			D_SEPARATOR},
+	{";",	"",	ID_SEMI_COLON,		D_SEPARATOR},
+	{"|",	"",	ID_PIPE,		D_GET}
+};

@@ -1,0 +1,11 @@
+/*
+** EPITECH PROJECT, 2018
+** project
+** File description:
+** main
+*/
+
+int main(void)
+{
+	return (0);
+}

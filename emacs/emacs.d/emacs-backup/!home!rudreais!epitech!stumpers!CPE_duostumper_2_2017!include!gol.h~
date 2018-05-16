@@ -1,0 +1,21 @@
+/*
+** EPITECH PROJECT, 2018
+** gol
+** File description:
+** header
+*/
+
+#pragma once
+
+typedef struct {
+	char **states;
+	char **oldstates;
+	char *path;
+	int iterate;
+	int fd;
+	int success;
+	int nb_lines;
+} map_t;
+
+void fulfill_map(map_t *map);
+void print_map(map_t *map);
