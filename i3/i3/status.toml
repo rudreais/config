@@ -1,0 +1,37 @@
+theme = "solarized-dark"
+icons = "awesome"
+
+[[block]]
+block = "time"
+interval = 60
+format = "%a %d/%m %R"
+
+[[block]]
+block = "music"
+max_width = 21
+marquee = false
+player = "spotify"
+buttons = ["play", "next"]
+
+[[block]]
+block = "cpu"
+interval = 0.7
+
+[[block]]
+block = "memory"
+interval = 5
+info_type = "memory"
+format_mem = "{Mup}%"
+format_swap = "{SUp}%"
+
+[[block]]
+block = "disk_space"
+path = "/"
+alias = "/"
+info_type = "available"
+unit = "GB"
+interval = 20
+
+[[block]]
+block = "battery"
+device = 'BAT1'
